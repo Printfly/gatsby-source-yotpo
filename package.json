@@ -1,0 +1,22 @@
+{
+  "name": "gatsby-source-yotpo",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Printfly/gatsby-source-yotpo.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Printfly/gatsby-source-yotpo/issues"
+  },
+  "homepage": "https://github.com/Printfly/gatsby-source-yotpo#readme",
+  "dependencies": {
+    "request": "^2.83.0"
+  }
+}
