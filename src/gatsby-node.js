@@ -33,7 +33,23 @@ export const sourceNodes = async (
         return node
       })
 
-      const node = await Node(review)
+      const data = {
+        id: review.id,
+        title: review.title,
+        content: review.content,
+        score: review.score,
+        productIdentifier: review.sku,
+        sentiment: review.sentiment,
+        votesUp: review.votes_up,
+        votesDown: review.votes_down,
+        name: review.name,
+        email: review.email,
+        reviewerType: review.reviewer_type,
+        createdAt: review.created_at,
+        updatedAt: review.updated_at
+      }
+
+      const node = await Node(data)
       createNode(node)
     }),
     bottomlines.map(async bottomline => {
@@ -47,10 +63,14 @@ export const sourceNodes = async (
         return node
       })
 
-      const node = await Node({
-        ...bottomline,
+      const data = {
         id: bottomline.domain_key,
-      })
+        score: bottomline.product_score,
+        totalReviews: bottomline.total_reviews,
+        productIdentifier: bottomline.domain_key
+      }
+
+      const node = await Node(data)
       createNode(node)
     }),
   )
