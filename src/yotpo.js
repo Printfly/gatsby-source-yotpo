@@ -40,3 +40,23 @@ export const allReviews = ({ appKey, accessToken, page, pageSize }) => {
     })
   })
 }
+
+export const allBottomlines = ({ appKey, page, pageSize }) => {
+  const options = {
+    method: 'GET',
+    url: `https://api.yotpo.com/v1/apps/${appKey}/bottom_lines`,
+    qs: {
+      page: page,
+      count: pageSize,
+    },
+    json: true,
+  }
+
+  return new Promise((resolve, reject) => {
+    request(options, function(error, response, body) {
+      if (error) reject(error)
+
+      resolve(body.response.bottomlines)
+    })
+  })
+}
