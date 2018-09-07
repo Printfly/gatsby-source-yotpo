@@ -9,27 +9,21 @@ export default async ({ appKey, appSecret }) => {
     appSecret,
   })
 
-  const reviews = await pagedGet(
-    allReviews,
-    {
-      appKey,
-      accessToken,
-    }
-  )
+  const reviews = await pagedGet(allReviews, {
+    appKey,
+    accessToken,
+  })
 
-  const bottomlines = await pagedGet(
-    allReviews,
-    {
-      appKey,
-      accessToken,
-    }
-  )
+  const bottomlines = await pagedGet(allReviews, {
+    appKey,
+    accessToken,
+  })
 
   console.timeEnd(`Fetch Yotpo reviews`)
 
   return {
     reviews,
-    bottomlines
+    bottomlines,
   }
 }
 

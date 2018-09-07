@@ -38,7 +38,9 @@ export const sourceNodes = async (
     }),
     bottomlines.map(async bottomline => {
       const type =
-        bottomline.domain_key === 'yotpo_site_reviews' ? 'SiteBottomline' : 'ProductBottomline'
+        bottomline.domain_key === 'yotpo_site_reviews'
+          ? 'SiteBottomline'
+          : 'ProductBottomline'
       const Node = createNodeFactory(type, async node => {
         node.dataString = JSON.stringify(node.data)
 
@@ -47,7 +49,7 @@ export const sourceNodes = async (
 
       const node = await Node(review)
       createNode(node)
-    })
+    }),
   )
 
   return
