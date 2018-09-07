@@ -24,7 +24,7 @@ export default async ({ appKey, appSecret }) => {
 async function pagedGet(
   options,
   page = 1,
-  pageSize = 1000,
+  pageSize = 100,
   aggregatedResponse = null,
 ) {
   const reviews = await allReviews({
