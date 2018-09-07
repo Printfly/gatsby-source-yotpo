@@ -49,7 +49,7 @@ export const sourceNodes = async (
 
       const node = await Node({
         ...bottomline,
-        id: bottomline.domain_key
+        id: bottomline.domain_key,
       })
       createNode(node)
     }),
