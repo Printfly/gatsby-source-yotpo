@@ -24,7 +24,7 @@ export default async ({ appKey, appSecret }) => {
 async function pagedGet(
   options,
   page = 1,
-  pageSize = 100,
+  pageSize = 1000,
   aggregatedResponse = null,
 ) {
   const reviews = await allReviews({
@@ -38,6 +38,8 @@ async function pagedGet(
   } else {
     aggregatedResponse = aggregatedResponse.concat(reviews)
   }
+
+  console.log(aggregatedResponse.length)
 
   if (reviews.length > 0) {
     return pagedGet(

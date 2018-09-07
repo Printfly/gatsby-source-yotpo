@@ -25,9 +25,6 @@ export const sourceNodes = async ({ boundActionCreators: { createNode } }, plugi
       const type = review.product != null ? 'ProductReview' : 'SiteReview';
       const Node = createNodeFactory(type, async node => {
         node.dataString = JSON.stringify(node.data)
-        node.data = {
-
-        }
 
         return node
       })
