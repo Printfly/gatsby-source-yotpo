@@ -39,8 +39,6 @@ async function pagedGet(
     aggregatedResponse = aggregatedResponse.concat(reviews)
   }
 
-  console.log(aggregatedResponse.length)
-
   if (reviews.length > 0) {
     return pagedGet(
       options,

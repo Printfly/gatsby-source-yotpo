@@ -22,7 +22,7 @@ export const sourceNodes = async ({ boundActionCreators: { createNode } }, plugi
 
   await Promise.all(
     reviews.map(async review => {
-      const type = review.product != null ? 'ProductReview' : 'SiteReview';
+      const type = review.sku === 'yotpo_site_reviews' ? 'SiteReview' : 'ProductReview';
       const Node = createNodeFactory(type, async node => {
         node.dataString = JSON.stringify(node.data)
 
@@ -36,5 +36,3 @@ export const sourceNodes = async ({ boundActionCreators: { createNode } }, plugi
 
   return
 };
-
-var request = require('request');
