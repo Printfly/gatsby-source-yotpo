@@ -1,2 +1,6 @@
 .DS_Store
+*.log
+/gatsby-node.js
+/fetch.js
+/yotpo.js
 node_modules

@@ -1,68 +1,43 @@
-var request = require('request');
+import createNodeHelpers from 'gatsby-node-helpers'
+import fetchData from './fetch'
 
-exports.sourceNodes = async ({ boundActionCreators }, { apiKey, productResolver }) => {
-  if(!apiKey) {
-    console.log('\nMake sure options has apiKey');
+const nodeHelpers = createNodeHelpers({ typePrefix: 'Yotpo' })
+const { createNodeFactory, generateNodeId } = nodeHelpers
+
+export const sourceNodes = async ({ boundActionCreators: { createNode } }, pluginOptions) => {
+  if(!pluginOptions.appKey) {
+    console.log('\nMake sure options has appKey');
     process.exit(1);
   }
 
-  const { createNode } = boundActionCreators;
-
-  // Site Reviews
-  request.get(
-    `https://api.yotpo.com/v1/widget/${appKey}/products/yotpo_site_reviews/reviews.json?per_page=50&page=1`,
-    function(error, response, body) {
-      var data = JSON.parse(body);
-      data.response.reviews.forEach(review => createNode(
-        Object.assign(
-          review,
-          {
-            id: review.id,
-            parent: `__SOURCE__`,
-            children: [],
-            internal: {
-              type: `SiteReview`,
-              contentDigest: crypto
-                .createHash(`md5`)
-                .update(JSON.stringify(review))
-                .digest(`hex`)
-            }
-          }
-        )
-      ));
-    }
-  )
-
-  // Product Reviews
-  if(!productResolver) {
-    productResolver.forEach(product => {
-      request.get(
-        `https://api.yotpo.com/v1/widget/${appKey}/products/${product}/reviews.json`,
-        function(error, response, body) {
-          var data = JSON.parse(body);
-          data.response.reviews.forEach(review => createNode(
-            Object.assign(
-              review,
-              {
-                id: review.id,
-                parent: `__SOURCE__`,
-                children: [],
-                internal: {
-                  type: `ProductReview`,
-                  contentDigest: crypto
-                    .createHash(`md5`)
-                    .update(JSON.stringify(review))
-                    .digest(`hex`)
-                }
-              }
-            )
-          ));
-        }
-      )
-    })
+  if(!pluginOptions.appSecret) {
+    console.log('\nMake sure options has appSecret');
+    process.exit(1);
   }
 
-  return;
+  const { reviews } = await fetchData({
+    appKey: pluginOptions.appKey,
+    appSecret: pluginOptions.appSecret
+  })
+
+  await Promise.all(
+    reviews.map(async review => {
+      const type = review.product != null ? 'ProductReview' : 'SiteReview';
+      const Node = createNodeFactory(type, async node => {
+        node.dataString = JSON.stringify(node.data)
+        node.data = {
+
+        }
+
+        return node
+      })
+
+      const node = await Node(review)
+      createNode(node)
+    }),
+  )
+
+  return
 };
 
 var request = require('request');

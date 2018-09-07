@@ -2,9 +2,12 @@
   "name": "gatsby-source-yotpo",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "prepublish": "npm run build",
+    "build": "babel src --out-dir .",
+    "format": "prettier --trailing-comma all --no-semi --single-quote --write 'src/**/*.js'",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "watch": "babel -w src --out-dir ."
   },
   "repository": {
     "type": "git",
@@ -17,6 +20,15 @@
   },
   "homepage": "https://github.com/Printfly/gatsby-source-yotpo#readme",
   "dependencies": {
+    "gatsby-node-helpers": "^0.3.0",
     "request": "^2.83.0"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.24.1",
+    "babel-plugin-transform-async-to-generator": "^6.24.1",
+    "babel-plugin-transform-object-rest-spread": "^6.23.0",
+    "babel-plugin-transform-runtime": "^6.23.0",
+    "babel-preset-env": "^1.6.0",
+    "prettier": "^1.5.3"
   }
 }
