@@ -14,7 +14,7 @@ export default async ({ appKey, appSecret }) => {
     accessToken,
   })
 
-  const bottomlines = await pagedGet(allReviews, {
+  const bottomlines = await pagedGet(allBottomlines, {
     appKey,
     accessToken,
   })

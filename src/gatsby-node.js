@@ -47,7 +47,10 @@ export const sourceNodes = async (
         return node
       })
 
-      const node = await Node(review)
+      const node = await Node({
+        ...bottomline,
+        id: bottomline.domain_key
+      })
       createNode(node)
     }),
   )
