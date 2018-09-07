@@ -4,25 +4,29 @@ import fetchData from './fetch'
 const nodeHelpers = createNodeHelpers({ typePrefix: 'Yotpo' })
 const { createNodeFactory, generateNodeId } = nodeHelpers
 
-export const sourceNodes = async ({ boundActionCreators: { createNode } }, pluginOptions) => {
-  if(!pluginOptions.appKey) {
-    console.log('\nMake sure options has appKey');
-    process.exit(1);
+export const sourceNodes = async (
+  { boundActionCreators: { createNode } },
+  pluginOptions,
+) => {
+  if (!pluginOptions.appKey) {
+    console.log('\nMake sure options has appKey')
+    process.exit(1)
   }
 
-  if(!pluginOptions.appSecret) {
-    console.log('\nMake sure options has appSecret');
-    process.exit(1);
+  if (!pluginOptions.appSecret) {
+    console.log('\nMake sure options has appSecret')
+    process.exit(1)
   }
 
   const { reviews } = await fetchData({
     appKey: pluginOptions.appKey,
-    appSecret: pluginOptions.appSecret
+    appSecret: pluginOptions.appSecret,
   })
 
   await Promise.all(
     reviews.map(async review => {
-      const type = review.sku === 'yotpo_site_reviews' ? 'SiteReview' : 'ProductReview';
+      const type =
+        review.sku === 'yotpo_site_reviews' ? 'SiteReview' : 'ProductReview'
       const Node = createNodeFactory(type, async node => {
         node.dataString = JSON.stringify(node.data)
 
@@ -35,4 +39,4 @@ export const sourceNodes = async ({ boundActionCreators: { createNode } }, plugi
   )
 
   return
-};
+}

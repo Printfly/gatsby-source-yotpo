@@ -11,7 +11,7 @@ export default async ({ appKey, appSecret }) => {
 
   const reviews = await pagedGet({
     appKey,
-    accessToken
+    accessToken,
   })
 
   console.timeEnd(`Fetch Yotpo reviews`)
@@ -40,12 +40,7 @@ async function pagedGet(
   }
 
   if (reviews.length > 0) {
-    return pagedGet(
-      options,
-      page + 1,
-      pageSize,
-      aggregatedResponse,
-    )
+    return pagedGet(options, page + 1, pageSize, aggregatedResponse)
   }
 
   return aggregatedResponse
