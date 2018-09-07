@@ -38,7 +38,7 @@ export const sourceNodes = async (
         title: review.title,
         content: review.content,
         score: review.score,
-        productIdentifier: review.sku,
+        productIdentifier: review.sku.toLowerCase(),
         sentiment: review.sentiment,
         votesUp: review.votes_up,
         votesDown: review.votes_down,
@@ -67,7 +67,7 @@ export const sourceNodes = async (
         id: bottomline.domain_key,
         score: bottomline.product_score,
         totalReviews: bottomline.total_reviews,
-        productIdentifier: bottomline.domain_key,
+        productIdentifier: bottomline.domain_key.toLowerCase(),
       }
 
       const node = await Node(data)
