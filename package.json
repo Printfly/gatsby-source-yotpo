@@ -1,7 +1,8 @@
 {
   "name": "gatsby-source-yotpo",
   "version": "0.8.0",
-  "description": "",
+  "description": "Source plugin for pulling reviews from Yotpo",
+  "main": "gatsby-node.js",
   "scripts": {
     "prepublish": "npm run build",
     "build": "babel src --out-dir .",
@@ -13,8 +14,8 @@
     "type": "git",
     "url": "git+https://github.com/Printfly/gatsby-source-yotpo.git"
   },
-  "author": "",
-  "license": "ISC",
+  "author": "Mac Morgan <mac@macmorgan.com>",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/Printfly/gatsby-source-yotpo/issues"
   },
@@ -23,6 +24,11 @@
     "gatsby-node-helpers": "^0.3.0",
     "request": "^2.83.0"
   },
+  "keywords": [
+    "gatsby",
+    "gatsby-plugin",
+    "gatsby-source-plugin"
+  ],
   "devDependencies": {
     "babel-cli": "^6.24.1",
     "babel-plugin-transform-async-to-generator": "^6.24.1",
