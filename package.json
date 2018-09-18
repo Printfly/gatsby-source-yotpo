@@ -1,8 +1,7 @@
 {
   "name": "gatsby-source-yotpo",
-  "version": "0.8.0",
+  "version": "0.8.3",
   "description": "Source plugin for pulling reviews from Yotpo",
-  "main": "gatsby-node.js",
   "scripts": {
     "prepublish": "npm run build",
     "build": "babel src --out-dir .",
