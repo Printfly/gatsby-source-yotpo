@@ -1,6 +1,6 @@
 {
   "name": "gatsby-source-yotpo",
-  "version": "0.8.3",
+  "version": "0.8.14",
   "description": "Source plugin for pulling reviews from Yotpo",
   "scripts": {
     "prepublish": "npm run build",
@@ -20,8 +20,8 @@
   },
   "homepage": "https://github.com/Printfly/gatsby-source-yotpo#readme",
   "dependencies": {
-    "gatsby-node-helpers": "^0.3.0",
-    "request": "^2.83.0"
+    "gatsby-node-helpers": "0.3.0",
+    "request": "2.88.2"
   },
   "keywords": [
     "gatsby",
@@ -29,11 +29,13 @@
     "gatsby-source-plugin"
   ],
   "devDependencies": {
-    "babel-cli": "^6.24.1",
-    "babel-plugin-transform-async-to-generator": "^6.24.1",
-    "babel-plugin-transform-object-rest-spread": "^6.23.0",
-    "babel-plugin-transform-runtime": "^6.23.0",
-    "babel-preset-env": "^1.6.0",
-    "prettier": "^1.5.3"
+    "@babel/cli": "^7.8.4",
+    "@babel/core": "^7.9.6",
+    "@babel/plugin-proposal-object-rest-spread": "^7.9.6",
+    "@babel/plugin-transform-async-to-generator": "^7.8.3",
+    "@babel/plugin-transform-runtime": "^7.9.6",
+    "@babel/preset-env": "^7.9.6",
+    "@babel/runtime": "^7.9.6",
+    "prettier": "^2.0.5"
   }
 }
