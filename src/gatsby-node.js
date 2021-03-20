@@ -5,7 +5,7 @@ const nodeHelpers = createNodeHelpers({ typePrefix: "Yotpo" });
 const { createNodeFactory, generateNodeId } = nodeHelpers;
 
 export const sourceNodes = async (
-  { boundActionCreators: { createNode } },
+  { actions: { createNode } },
   pluginOptions
 ) => {
   if (!pluginOptions.appKey) {
