@@ -20,7 +20,7 @@
   },
   "homepage": "https://github.com/Printfly/gatsby-source-yotpo#readme",
   "dependencies": {
-    "gatsby-node-helpers": "0.3.0",
+    "gatsby-node-helpers": "^1.2.1",
     "request": "2.88.2"
   },
   "keywords": [
