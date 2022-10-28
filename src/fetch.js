@@ -7,7 +7,7 @@ import {
 
 export default async ({ appKey, appSecret }) => {
   console.time(`Fetch Yotpo reviews`);
-  console.log(`Starting to fetch reviews from Yotpo`);
+  console.log(`Starting to fetch reviews from Yotpo using AU's fork of gatsby-source-yotpo`);
 
   const accessToken = await getAccessToken({
     appKey,
@@ -44,7 +44,7 @@ async function pagedGet(
   method,
   options,
   page = 1,
-  pageSize = 100,
+  pageSize = 1000,
   aggregatedResponse = null
 ) {
   const reviews = await method({
