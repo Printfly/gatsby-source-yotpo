@@ -1,13 +1,19 @@
-import createNodeHelpers from "gatsby-node-helpers";
+import { createNodeHelpers } from "gatsby-node-helpers";
 import fetchData from "./fetch";
 
-const nodeHelpers = createNodeHelpers({ typePrefix: "Yotpo" });
-const { createNodeFactory, generateNodeId } = nodeHelpers;
-
 export const sourceNodes = async (
-  { boundActionCreators: { createNode } },
+  gatsbyArgs,
   pluginOptions
 ) => {
+  const { actions, createNodeId, createContentDigest } = gatsbyArgs;
+  const nodeHelpers = createNodeHelpers({
+    typePrefix: "Yotpo",
+    createNodeId,
+    createContentDigest,
+  });
+  const { createNodeFactory } = nodeHelpers;
+  const { createNode } = actions;
+
   if (!pluginOptions.appKey) {
     console.log("\nMake sure options has appKey");
     process.exit(1);
@@ -18,10 +24,9 @@ export const sourceNodes = async (
     process.exit(1);
   }
 
-  const { reviews, productBottomlines, siteBottomlines } = await fetchData({
-    appKey: pluginOptions.appKey,
-    appSecret: pluginOptions.appSecret,
-  });
+  const { reviews, productBottomlines, siteBottomlines } = await fetchData(
+    process.env.ASSETS_URL
+  );
 
   await Promise.all(
     reviews.map(async (review) => {
@@ -90,6 +95,4 @@ export const sourceNodes = async (
       createNode(node);
     })
   );
-
-  return;
 };

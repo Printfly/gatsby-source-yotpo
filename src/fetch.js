@@ -1,43 +1,16 @@
 import {
-  getAccessToken,
-  allReviews,
-  allProductBottomlines,
-  allSiteBottomlines,
+  getCachedData
 } from "./yotpo";
 
-export default async ({ appKey, appSecret }) => {
+export default async (assetsUrl) => {
   console.time(`Fetch Yotpo reviews`);
   console.log(`Starting to fetch reviews from Yotpo using AU's fork of gatsby-source-yotpo`);
 
-  const accessToken = await getAccessToken({
-    appKey,
-    appSecret,
-  });
-
-  const reviews = await pagedGet(allReviews, {
-    appKey,
-    accessToken,
-  });
-
-  const productBottomlines = await pagedGet(allProductBottomlines, {
-    appKey,
-    accessToken,
-  });
-
-  const siteBottomlines = await allSiteBottomlines({
-    appKey,
-    accessToken,
-    page: 1,
-    pageSize: 1,
-  });
+  const data = await getCachedData(assetsUrl);
 
   console.timeEnd(`Fetch Yotpo reviews`);
 
-  return {
-    reviews,
-    productBottomlines,
-    siteBottomlines,
-  };
+  return data;
 };
 
 async function pagedGet(
