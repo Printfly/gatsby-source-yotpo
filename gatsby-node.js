@@ -1,24 +1,17 @@
 "use strict";
 
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
-
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.sourceNodes = void 0;
-
 var _regenerator = _interopRequireDefault(require("@babel/runtime/regenerator"));
-
 var _asyncToGenerator2 = _interopRequireDefault(require("@babel/runtime/helpers/asyncToGenerator"));
-
 var _gatsbyNodeHelpers = require("gatsby-node-helpers");
-
 var _fetch = _interopRequireDefault(require("./fetch"));
-
 var sourceNodes = /*#__PURE__*/function () {
   var _ref = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee7(gatsbyArgs, pluginOptions) {
     var actions, createNodeId, createContentDigest, nodeHelpers, createNodeFactory, createNode, _yield$fetchData, reviews, productBottomlines, siteBottomlines;
-
     return _regenerator["default"].wrap(function _callee7$(_context7) {
       while (1) {
         switch (_context7.prev = _context7.next) {
@@ -31,20 +24,16 @@ var sourceNodes = /*#__PURE__*/function () {
             });
             createNodeFactory = nodeHelpers.createNodeFactory;
             createNode = actions.createNode;
-
             if (!pluginOptions.appKey) {
               console.log("\nMake sure options has appKey");
               process.exit(1);
             }
-
             if (!pluginOptions.appSecret) {
               console.log("\nMake sure options has appSecret");
               process.exit(1);
             }
-
             _context7.next = 8;
             return (0, _fetch["default"])(process.env.ASSETS_URL);
-
           case 8:
             _yield$fetchData = _context7.sent;
             reviews = _yield$fetchData.reviews;
@@ -67,7 +56,6 @@ var sourceNodes = /*#__PURE__*/function () {
                                   case 0:
                                     node.dataString = JSON.stringify(node.data);
                                     return _context.abrupt("return", node);
-
                                   case 2:
                                   case "end":
                                     return _context.stop();
@@ -75,17 +63,14 @@ var sourceNodes = /*#__PURE__*/function () {
                               }
                             }, _callee);
                           }));
-
                           return function (_x4) {
                             return _ref3.apply(this, arguments);
                           };
                         }());
-
                         if (!review.sku) {
                           _context2.next = 8;
                           break;
                         }
-
                         data = {
                           id: review.id,
                           title: review.title,
@@ -103,11 +88,9 @@ var sourceNodes = /*#__PURE__*/function () {
                         };
                         _context2.next = 6;
                         return Node(data);
-
                       case 6:
                         node = _context2.sent;
                         createNode(node);
-
                       case 8:
                       case "end":
                         return _context2.stop();
@@ -115,7 +98,6 @@ var sourceNodes = /*#__PURE__*/function () {
                   }
                 }, _callee2);
               }));
-
               return function (_x3) {
                 return _ref2.apply(this, arguments);
               };
@@ -135,7 +117,6 @@ var sourceNodes = /*#__PURE__*/function () {
                                   case 0:
                                     node.dataString = JSON.stringify(node.data);
                                     return _context3.abrupt("return", node);
-
                                   case 2:
                                   case "end":
                                     return _context3.stop();
@@ -143,7 +124,6 @@ var sourceNodes = /*#__PURE__*/function () {
                               }
                             }, _callee3);
                           }));
-
                           return function (_x6) {
                             return _ref5.apply(this, arguments);
                           };
@@ -156,11 +136,9 @@ var sourceNodes = /*#__PURE__*/function () {
                         };
                         _context4.next = 5;
                         return Node(data);
-
                       case 5:
                         node = _context4.sent;
                         createNode(node);
-
                       case 7:
                       case "end":
                         return _context4.stop();
@@ -168,7 +146,6 @@ var sourceNodes = /*#__PURE__*/function () {
                   }
                 }, _callee4);
               }));
-
               return function (_x5) {
                 return _ref4.apply(this, arguments);
               };
@@ -188,7 +165,6 @@ var sourceNodes = /*#__PURE__*/function () {
                                   case 0:
                                     node.dataString = JSON.stringify(node.data);
                                     return _context5.abrupt("return", node);
-
                                   case 2:
                                   case "end":
                                     return _context5.stop();
@@ -196,7 +172,6 @@ var sourceNodes = /*#__PURE__*/function () {
                               }
                             }, _callee5);
                           }));
-
                           return function (_x8) {
                             return _ref7.apply(this, arguments);
                           };
@@ -208,11 +183,9 @@ var sourceNodes = /*#__PURE__*/function () {
                         };
                         _context6.next = 5;
                         return Node(data);
-
                       case 5:
                         node = _context6.sent;
                         createNode(node);
-
                       case 7:
                       case "end":
                         return _context6.stop();
@@ -220,12 +193,10 @@ var sourceNodes = /*#__PURE__*/function () {
                   }
                 }, _callee6);
               }));
-
               return function (_x7) {
                 return _ref6.apply(this, arguments);
               };
             }()));
-
           case 14:
           case "end":
             return _context7.stop();
@@ -233,10 +204,9 @@ var sourceNodes = /*#__PURE__*/function () {
       }
     }, _callee7);
   }));
-
   return function sourceNodes(_x, _x2) {
     return _ref.apply(this, arguments);
   };
 }();
-
 exports.sourceNodes = sourceNodes;
+//# sourceMappingURL=gatsby-node.js.map
